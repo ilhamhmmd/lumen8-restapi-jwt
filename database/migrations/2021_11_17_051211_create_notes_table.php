@@ -15,7 +15,7 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->string('title');
             $table->text('description');
             $table->integer('count');
@@ -23,6 +23,8 @@ class CreateNotesTable extends Migration
             $table->bigInteger('price');
             $table->date('date');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
