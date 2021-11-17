@@ -30,4 +30,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }
